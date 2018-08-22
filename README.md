@@ -8,6 +8,21 @@ GoDSP provides API to call dsp without login and socket maintain
   ```
   ##### Configuration App.conf
   ```
+  
+appname = godsp
+httpport = 9090
+runmode = dev
+autorender = false
+copyrequestbody = true
+EnableDocs = true
+EnableAdmin = true
+AdminAddr = "localhost"
+AdminPort = 8088    
+LogFiles = "/Users/mfstech/Logs/test.log"
+LogFilesMaxDays = 7
+LogFilesEs = "cxxxxx"
+logFilesEsLevel = 1
+
 #dsp
 dspIP     = "xxxxxx"
 dspPort   = "xxxxxx"
