@@ -1,68 +1,26 @@
 #### Synopsis
 
-GoDB provides convenient API to query from any DB and with custom SQL and parameter, built with golang (beego)
+GoDSP provides API to call dsp without login and socket maintain
 
 #### API Example
   ```
-  curl -X GET "http://localhost:8080/v1/query/select?ds=localhost&sqlid=user" -H "accept: application/json"
+  curl -X GET "localhost:9090/v1/dsp/select?oprid=getAll&msisdn=628118003585" -H "accept: application/json"
   ```
   ##### Configuration App.conf
   ```
-  #ds
-  ds.localhost= "apps:aplikasi@tcp(localhost:3306)/test|mysql|10|10|120000"
-  sqlid.user="SELECT * from `user` limit 10"
-  ```
-  
-  ```
-  result:
- {
-  "count": 10,
-  "data": [
-    {
-      "email": "slene",
-      "id": "1",
-      "name": "testing"
-    },
-    {
-      "email": "someemail@someemailprovider.com",
-      "id": "2",
-      "name": "First"
-    },
-    {
-      "email": "someemail@someemailprovider.com",
-      "id": "3",
-      "name": "First"
-    }
-    ....
-  ],
-  "desc": "-",
-  "status": false
-}
-```
-```
-curl -X GET "http://localhost:8080/v1/query/select?ds=localhost2&sqlid=user2&id=1" -H "accept: application/json"
-```
-#### Configuration App.conf
-```
-ds.localhost2= "apps:aplikasi@tcp(localhost:3306)/mfs|mysql|10|10|120000"
-sqlid.user2="SELECT * from `user` where id=[id]"
-```
-```
-Result
-{
-  "count": 1,
-  "data": [
-    {
-      "email": "slene",
-      "id": "1",
-      "name": "testing"
-    }
-  ],
-  "desc": "-",
-  "success": true
-}
-```
+#dsp
+dspIP     = "xxxxxx"
+dspPort   = "xxxxxx"
+dspUser   = "xxxxxx"
+dspPwd    = "xxxxxx"
+localIP   = "xxxxxx"
+localPort = "xxxxxx"
+dspPool = ""
 
+oprid.getAll="<GET_SUBDATA><MSISDN>[msisdn]</MSISDN><GETCOLUMN>IMEI&amp;IMSI&amp;LAC&amp;CI&amp;PROPINSI&amp;REGIONAL&amp;BRANCH&amp;KABUPATEN&amp;PRODUCT_ID&amp;AREA&amp;SPOSNAME&amp;OSVENDOR&amp;TVENDOR&amp;TTYPE&amp;OSVERSION&amp;POINAME&amp;CLUSTER&amp;LATITUDE&amp;LONGITUDE&amp;KECAMATAN&amp;KECAMATAN&amp;KELURAHAN&amp;POINAME&amp;POILONGITUDE&amp;POILATITUDE</GETCOLUMN></GET_SUBDATA>"
+#oprid.getAll="<GET_SUBDATA><MSISDN>[msisdn]</MSISDN><GETCOLUMN>IMEI</GETCOLUMN></GET_SUBDATA>"
+
+```
 #### Installation or Development
 
 1. install golang
@@ -77,7 +35,6 @@ Result
 
 #### API Reference
 - https://beego.me
-- https://github.com/elgs/gosqljson
 
 
 #### Tests
